@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace ConsolePractice
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+           DiceGame();
+
+        }
+
+        public static void DiceGame()
+        {
+            string name;
+            int betamount, betChoice, DiceNumber;
+
+            Console.WriteLine("==================Dice Game==================");
+            Console.WriteLine("===========================================================");
+
+            Console.WriteLine("You have three option for play Dice Game\nAfter entering your good name and deposit the betting amount.\n");
+
+            Console.WriteLine("Option-1: Dice Number should between 1 to 5 ~~Winning Amount Double\nOption-2- Dice Number should between 6 to 7 ~~Winning Amount Triple\nOption-3: Dice Number should between 8 to 12 ~~Winning Amount Double\n");
+            Console.WriteLine("Your Lucky Name");
+            name = Console.ReadLine();
+            Console.WriteLine("Your bet Amount");
+            betamount = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Choose your Choice between 1,2 or 3");
+            betChoice = Convert.ToInt32(Console.ReadLine());
+            Random ran = new Random();
+            DiceNumber = ran.Next(2, 13);
+
+            if (betChoice==1)
+            {
+                Console.WriteLine("Dice is rolling . . . .");
+                Thread.Sleep(2000);
+                Console.WriteLine("Dice Result is {0}", DiceNumber);
+                if (DiceNumber<=5)
+                {
+                    Console.WriteLine("Hi," + name + " your bet amount is " + betamount + " and You Win !! Your amount is now " + (betamount * 2));
+                    
+                }
+                else
+                {
+                    Console.WriteLine("Oops!! Sorry" + name + ", You Loose !");
+
+                }
+            }
+            else if (betChoice==2)
+            {
+                Console.WriteLine("Dice is rolling . . . .");
+                Thread.Sleep(2000);
+                Console.WriteLine("Dice Result is {0}", DiceNumber);
+                if (DiceNumber==6 || DiceNumber==7)
+                {
+                    Console.WriteLine("Hi," + name + " your bet amount is " + betamount + " and You Win !! Your amount is now " + (betamount * 3));
+                }
+                else
+                {
+                    Console.WriteLine("Oops!! Sorry" + name + ", You Loose !");
+                }
+                
+            }
+            else if (betChoice==3)
+            {
+                Console.WriteLine("Dice is rolling . . . .");
+                Thread.Sleep(2000);
+                Console.WriteLine("Dice Result is {0}", DiceNumber);
+                if (DiceNumber>=8)
+                {
+                    Console.WriteLine("Hi," + name + " your bet amount is " + betamount + " and You Win !! Your amount is now " + (betamount * 2));
+                }
+                else
+                {
+                    Console.WriteLine("Oops!! Sorry" + name + ", You Loose !");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Wrong Choice!! Choose correct Option.");
+            }
+            Console.ReadLine();
+        }
+    }
+
+}
